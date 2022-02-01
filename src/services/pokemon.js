@@ -1,7 +1,8 @@
-export default async function fetchPokemon() {
+export default async function fetchPokemonGen4() {
   const resp = await fetch('https://pokeapi.co/api/v2/pokedex/6');
   const data = await resp.json();
-  console.log(data);
+  const entries = await data.pokemon_entries;
+  console.log(entries);
 
-  return data;
+  return entries;
 }
