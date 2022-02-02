@@ -1,0 +1,6 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  text-indent: 20px;
+  text-transform: capitalize;
+}

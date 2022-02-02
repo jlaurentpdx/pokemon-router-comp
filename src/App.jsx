@@ -1,49 +1,47 @@
 import { useState, useEffect } from 'react';
-
-import PokemonList from './components/PokemonList/PokemonList';
 import { fetchPokedexByGen, fetchPokedexList } from './services/pokemon';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-// import styles from './App.css';
+import Home from './views/Home/Home';
+import Generation from './views/Generation/Generation';
+import Controls from './components/Controls/Controls';
 
-function Controls({ generation, setGeneration, pokedexes }) {
-  return (
-    <select onChange={(e) => setGeneration(e.target.value)} value={generation}>
-      {pokedexes
-        ? pokedexes.map((region) => (
-            <option key={region.name} value={region.name}>
-              {region.name}
-            </option>
-          ))
-        : null}
-    </select>
-  );
-}
+import styles from './App.css';
 
 export default function App() {
-  const [pokemon, setPokemon] = useState([]);
   const [pokedexes, setPokedexes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [generation, setGeneration] = useState('2');
 
+  // Get Pokedexes
   useEffect(() => {
-    const getPokemon = async () => {
-      const pokemonList = await fetchPokedexByGen(generation);
+    const getPokedexes = async () => {
       const pokedexList = await fetchPokedexList();
-      setPokemon(pokemonList);
       setPokedexes(pokedexList);
-      setLoading(false);
-      console.log('pokemon', pokemonList);
     };
-    getPokemon();
-  }, [generation]);
-
-  if (loading) return <p>Loading...</p>;
+    getPokedexes();
+  }, []);
 
   return (
-    <div className="App">
-      <h1>Pokémon</h1>
-      <Controls {...{ pokedexes }} />
-      <PokemonList {...{ pokemon }} />
-    </div>
+    <Router>
+      <div
+        className="App"
+        style={{ display: 'flex', justifyContent: 'space-around' }}
+      >
+        <div className="left">
+          <h1>Pokémon</h1>
+          <Link to="/">Home</Link>
+          <Controls {...{ pokedexes }} />
+        </div>
+
+        <div className="right" style={{ width: '50vw' }}>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/:generation">
+            <Generation />
+          </Route>
+        </div>
+      </div>
+    </Router>
   );
 }
