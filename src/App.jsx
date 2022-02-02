@@ -17,20 +17,23 @@ export default function App() {
     const getPokedexes = async () => {
       const pokedexList = await fetchPokedexList();
       setPokedexes(pokedexList);
+      setLoading(false);
     };
     getPokedexes();
   }, []);
 
+  if (loading) return <p>Loading...</p>;
+
   return (
     <Router>
       <div className={styles.App}>
-        <div className={styles}>
+        <div className={styles.left}>
           <h1>Pokémon Regions</h1>
           <Link to="/">Home</Link>
           <Controls {...{ pokedexes }} />
         </div>
 
-        <div className="right" style={{ width: '50vw' }}>
+        <div className={styles.right}>
           <Route exact path="/" component={Home} />
           <Route path="/:generation" component={Generation} />
         </div>

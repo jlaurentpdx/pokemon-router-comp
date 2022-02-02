@@ -11,6 +11,7 @@ export default function Generation() {
 
   useEffect(() => {
     const getPokemon = async () => {
+      setLoading(true);
       const pokemonList = await fetchPokedexByGen(generation);
       setPokemon(pokemonList);
       setLoading(false);
