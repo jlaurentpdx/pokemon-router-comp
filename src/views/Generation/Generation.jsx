@@ -20,5 +20,10 @@ export default function Generation() {
 
   if (loading) return <p>Loading...</p>;
 
-  return <PokemonList {...{ pokemon }} />;
+  return (
+    <>
+      <h1 style={{ textAlign: 'center' }}>{generation}</h1>
+      <PokemonList {...{ pokemon }} />
+    </>
+  );
 }

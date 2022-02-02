@@ -1,9 +1,15 @@
 .list {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  max-height: 100vh;
+  flex-wrap: wrap;
   align-items: center;
+  text-align: center;
 }
 
 .name {
   text-transform: capitalize;
+  width: 10vw;
+  margin: 1px;
 }

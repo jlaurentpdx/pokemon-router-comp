@@ -23,23 +23,16 @@ export default function App() {
 
   return (
     <Router>
-      <div
-        className="App"
-        style={{ display: 'flex', justifyContent: 'space-around' }}
-      >
-        <div className="left">
-          <h1>Pokémon</h1>
+      <div className={styles.App}>
+        <div className={styles}>
+          <h1>Pokémon Regions</h1>
           <Link to="/">Home</Link>
           <Controls {...{ pokedexes }} />
         </div>
 
         <div className="right" style={{ width: '50vw' }}>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/:generation">
-            <Generation />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route path="/:generation" component={Generation} />
         </div>
       </div>
     </Router>
