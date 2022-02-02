@@ -11,6 +11,6 @@
 
 .name {
   text-transform: capitalize;
-  width: 10vw;
-  margin: 1px;
+  max-width: 10vw;
+  margin: 1vw;
 }

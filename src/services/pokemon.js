@@ -13,3 +13,10 @@ export async function fetchPokedexList() {
 
   return results;
 }
+
+export async function fetchRegionList() {
+  const resp = await fetch('https://pokeapi.co/api/v2/region');
+  const { results } = await resp.json();
+
+  return results;
+}
