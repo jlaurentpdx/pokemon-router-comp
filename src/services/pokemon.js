@@ -20,3 +20,10 @@ export async function fetchRegionList() {
 
   return results;
 }
+
+export async function fetchPokemonByName(name) {
+  const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  const data = await resp.json();
+
+  return data;
+}

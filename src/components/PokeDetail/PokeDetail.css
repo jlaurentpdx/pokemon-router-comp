@@ -1,0 +1,22 @@
+.info {
+  display: flex;
+  flex-direction: column;
+
+  border: double 5px lightgray;
+  margin: 10px;
+  text-align: center;
+}
+
+.info hr {
+  width: 15vw;
+}
+
+.info h3 {
+  display: inline;
+  margin: 10%;
+}
+
+.headers {
+  border: double 5px lightgray;
+  margin: 3%;
+}
