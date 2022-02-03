@@ -1,4 +1,4 @@
-export function sliceGeneration(name) {
+export function slicePokedex(name) {
   let short = name;
 
   if (name.includes('original-')) short = name.slice(9);

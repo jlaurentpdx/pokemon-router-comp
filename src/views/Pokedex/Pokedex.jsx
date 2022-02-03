@@ -2,9 +2,9 @@ import PokemonList from '../../components/PokemonList/PokemonList';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPokedexByGen } from '../../services/pokemon';
-import { sliceGeneration } from '../../utils/utils';
+import { slicePokedex } from '../../utils/utils';
 
-export default function Generation() {
+export default function Pokedex() {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,7 +24,7 @@ export default function Generation() {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center' }}>{sliceGeneration(generation)}</h1>
+      <h1 style={{ textAlign: 'center' }}>{slicePokedex(generation)}</h1>
       <PokemonList {...{ pokemon }} />
     </>
   );

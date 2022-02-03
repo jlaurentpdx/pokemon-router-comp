@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Home from './views/Home/Home';
-import Generation from './views/Generation/Generation';
+import Pokedex from './views/Pokedex/Pokedex';
 import Regions from './components/Regions/Regions';
 import PokeDetail from './components/PokeDetail/PokeDetail';
 
@@ -20,7 +20,7 @@ export default function App() {
 
         <div className={styles.right}>
           <Route exact path="/" component={Home} />
-          <Route path="/:generation" component={Generation} />
+          <Route path="/:generation" component={Pokedex} />
         </div>
       </div>
     </Router>

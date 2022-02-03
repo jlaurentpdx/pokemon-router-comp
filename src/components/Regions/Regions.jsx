@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchPokedexList, fetchRegionList } from '../../services/pokemon';
 import { Link } from 'react-router-dom';
-import { sliceGeneration } from '../../utils/utils';
+import { slicePokedex } from '../../utils/utils';
 
 import styles from './Regions.css';
 
@@ -35,7 +35,7 @@ export default function Regions() {
     <section className={styles.list}>
       {filterRegions.map((region, index) => (
         <Link key={region.name} to={`/${region.name}`}>
-          Gen {index + 1} | {sliceGeneration(region.name)}
+          Gen {index + 1} | {slicePokedex(region.name)}
         </Link>
       ))}
     </section>
