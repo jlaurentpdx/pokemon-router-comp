@@ -17,8 +17,6 @@ export default function PokeDetail() {
     fetchPokemon();
   }, [name]);
 
-  console.log(pokemon);
-
   const { sprites, types } = pokemon;
   const pokeTypes = types?.map((type) => type.type.name);
 

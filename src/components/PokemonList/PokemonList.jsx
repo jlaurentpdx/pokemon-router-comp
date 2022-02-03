@@ -2,7 +2,7 @@ import style from './PokemonList.css';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 export default function PokemonList({ pokemon }) {
-  const { url, path } = useRouteMatch();
+  const { url } = useRouteMatch();
 
   return (
     <section className={style.list}>

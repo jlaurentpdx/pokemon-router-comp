@@ -6,6 +6,10 @@
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.App a {
+  text-decoration: none;
+}
+
 .left {
   width: 20vw;
 }

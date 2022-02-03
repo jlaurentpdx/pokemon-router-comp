@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { sliceGeneration } from '../../utils/utils';
 
 import styles from './Regions.css';
 
@@ -12,9 +13,9 @@ export default function Regions({ regions, pokedexes }) {
 
   return (
     <section className={styles.list}>
-      {filterRegions.map((region) => (
+      {filterRegions.map((region, index) => (
         <Link key={region.name} to={`/${region.name}`}>
-          {region.name}
+          Gen {index + 1} | {sliceGeneration(region.name)}
         </Link>
       ))}
     </section>
