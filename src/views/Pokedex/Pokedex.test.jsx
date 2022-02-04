@@ -6,19 +6,19 @@ import * as mock from '../../utils/mockData';
 
 import Pokedex from './Pokedex';
 
-// const server = setupServer(
-//   rest.get('https://pokeapi.co/api/v2/pokedex/galar', (req, res, ctx) => {
-//     console.log('mocking pokemonInRegion');
-//     return res(ctx.json(mock.pokemonInRegion));
-//   })
-// );
+const server = setupServer(
+  rest.get('https://pokeapi.co/api/v2/pokedex/galar', (req, res, ctx) => {
+    console.log('mocking pokemonInRegion');
+    return res(ctx.json(mock.pokemonInRegion));
+  })
+);
 
-// beforeAll(() => server.listen());
-// afterAll(() => server.close());
+beforeAll(() => server.listen());
+afterAll(() => server.close());
 
 test('should render a list of Pokemon in the selected region', async () => {
   render(
-    <Router initialEntries={['/kanto']}>
+    <Router initialEntries={['/galar']}>
       <Route path="/:region">
         <Pokedex />
       </Route>
@@ -26,7 +26,7 @@ test('should render a list of Pokemon in the selected region', async () => {
   );
 
   const pokeList = await screen.findByRole('list');
-  const region = screen.getByRole('heading', { name: /kanto/i });
-  expect(pokeList.children).toHaveLength(151);
+  const region = screen.getByRole('heading', { name: /galar/i });
+  expect(pokeList.children).toHaveLength(9);
   expect(region).toBeInTheDocument();
 });
