@@ -5,14 +5,14 @@ export default function PokemonList({ pokemon }) {
   const { url } = useRouteMatch();
 
   return (
-    <section className={style.list}>
+    <ul className={style.list}>
       {pokemon.map((pokes) => (
-        <p key={pokes.entry_number} className={style.name}>
+        <li key={pokes.entry_number} className={style.name}>
           <Link to={`${url}/${pokes.pokemon_species.name}`}>
             {pokes.pokemon_species.name}
           </Link>
-        </p>
+        </li>
       ))}
-    </section>
+    </ul>
   );
 }

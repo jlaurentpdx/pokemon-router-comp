@@ -1,8 +1,9 @@
-import PokemonList from '../../components/PokemonList/PokemonList';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPokedexByRegion } from '../../services/pokemon';
 import { sliceRegion } from '../../utils/utils';
+
+import PokemonList from '../../components/PokemonList/PokemonList';
 
 export default function Pokedex() {
   const [pokemon, setPokemon] = useState([]);
