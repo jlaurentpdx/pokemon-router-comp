@@ -11,19 +11,22 @@ export default function App() {
   return (
     <Router>
       <div className={styles.App}>
-        <div className={styles.left}>
-          <h1>Pokédex Navigator</h1>
-          <Link to="/">Home</Link>
-          <h2>Regions</h2>
-          <Regions />
-          <Route path="/:generation/:name" component={PokeDetail} />
-        </div>
+        <h1>Pokémon Compendium</h1>
+        <div className={styles.container}>
+          <div className={styles.left}>
+            <h1>Pokédex Navigator</h1>
+            <Link to="/">Home</Link>
+            <h2>Regions</h2>
+            <Regions />
+            <Route path="/:generation/:name" component={PokeDetail} />
+          </div>
 
-        <div className={styles.right}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/:generation" component={Pokedex} />
-          </Switch>
+          <div className={styles.right}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/:generation" component={Pokedex} />
+            </Switch>
+          </div>
         </div>
       </div>
     </Router>
