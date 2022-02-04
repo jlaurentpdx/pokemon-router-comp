@@ -29,15 +29,16 @@ export default function Regions() {
       return dex.name.includes(region.name);
     });
   });
-  console.log(filterRegions);
 
   return (
-    <section className={styles.list}>
+    <ul className={styles.list}>
       {filterRegions.map((region, index) => (
-        <Link key={region.name} to={`/${region.name}`}>
-          Gen {index + 1} | {slicePokedex(region.name)}
-        </Link>
+        <li key={region.name}>
+          <Link to={`/${region.name}`}>
+            Gen {index + 1} | {slicePokedex(region.name)}
+          </Link>
+        </li>
       ))}
-    </section>
+    </ul>
   );
 }
