@@ -1,4 +1,4 @@
-import { getByRole, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter as Router, Route } from 'react-router-dom';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
