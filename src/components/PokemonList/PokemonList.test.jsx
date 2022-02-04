@@ -20,7 +20,7 @@ const pokemon = [
 test('displays a list of pokemon', () => {
   render(
     <MemoryRouter initialEntries={['/kanto']}>
-      <Route path="/:generation">
+      <Route path="/:region">
         <PokemonList pokemon={pokemon} />
       </Route>
     </MemoryRouter>

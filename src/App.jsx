@@ -18,13 +18,13 @@ export default function App() {
             <Link to="/">Home</Link>
             <h2>Regions</h2>
             <Regions />
-            <Route path="/:generation/:name" component={PokeDetail} />
+            <Route path="/:region/:name" component={PokeDetail} />
           </div>
 
           <div className={styles.right}>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/:generation" component={Pokedex} />
+              <Route path="/:region" component={Pokedex} />
             </Switch>
           </div>
         </div>

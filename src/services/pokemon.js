@@ -1,5 +1,5 @@
-export async function fetchPokedexByGen(gen) {
-  const resp = await fetch(`https://pokeapi.co/api/v2/pokedex/${gen}`);
+export async function fetchPokedexByRegion(region) {
+  const resp = await fetch(`https://pokeapi.co/api/v2/pokedex/${region}`);
   const { pokemon_entries } = await resp.json();
 
   return pokemon_entries;
