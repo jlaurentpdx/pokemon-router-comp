@@ -39,9 +39,9 @@ export default function PokeDetail() {
       {sprites ? (
         <>
           <h2 className={styles.headers}>Sprites</h2>
-          <img src={sprites?.front_default} />
+          <img src={sprites?.front_default} alt={`${name} sprite`} />
           <p>Original</p>
-          <img src={sprites?.front_shiny} />
+          <img src={sprites?.front_shiny} alt={`shiny ${name} sprite`} />
           <p>Shiny</p>
         </>
       ) : null}

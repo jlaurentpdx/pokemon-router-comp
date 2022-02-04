@@ -1,55 +1,43 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter as Router, Route } from 'react-router-dom';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+import * as mock from './utils/mockData';
+
 import App from './App';
+
+const server = setupServer(
+  rest.get('https://pokeapi.co/api/v2/pokedex', (req, res, ctx) => {
+    return res(ctx.json(mock.pokedexes));
+  }),
+  rest.get('https://pokeapi.co/api/v2/region', (req, res, ctx) => {
+    return res(ctx.json(mock.regions));
+  }),
+  rest.get('https://pokeapi.co/api/v2/pokedex/galar', (req, res, ctx) => {
+    return res(ctx.json(mock.pokemonInRegion));
+  }),
+  rest.get('https://pokeapi.co/api/v2/pokemon/sobble', (req, res, ctx) => {
+    return res(ctx.json(mock.sobble));
+  })
+);
+
+beforeAll(() => server.listen());
+afterAll(() => server.close());
 
 test('App renders a header to the page', async () => {
   render(<App />);
 
+  const homeHeader = screen.getByRole('heading', { name: /getting started/i });
   const headings = screen.getAllByRole('heading');
   const list = await screen.findByRole('list', /regions/i);
 
+  expect(homeHeader).toBeInTheDocument();
   expect(headings).toHaveLength(4);
   expect(list.children).toHaveLength(8);
 });
 
-test('clicking on a region should render the correct list of Pokemon', async () => {
-  render(
-    <Router>
-      <App />
-    </Router>
-  );
-
-  const region = await screen.findByRole('link', { name: /gen 1 \| kanto/i });
-  userEvent.click(region);
-
-  const pokemon = await screen.findByRole('link', { name: /squirtle/i });
-  expect(pokemon).toBeInTheDocument();
-});
-
-test('clicking on a region should render a pokemon detail view', async () => {
-  render(
-    <Router>
-      <App />
-    </Router>
-  );
-
-  const region = await screen.findByRole('link', { name: /gen 2 \| johto/i });
-  userEvent.click(region);
-
-  const pokemon = await screen.findByRole('link', { name: /totodile/i });
-  userEvent.click(pokemon);
-
-  const name = await screen.findByRole('heading', { name: /totodile/i });
-  expect(name).toBeInTheDocument();
-});
-
-test.only('clicking on Home link renders intro text', async () => {
-  render(
-    <Router>
-      <App />
-    </Router>
-  );
+test('user can view a list of regions, pokemon, and a pokemon detail', async () => {
+  render(<App />);
 
   const region = await screen.findByRole('link', { name: /gen 8 \| galar/i });
   userEvent.click(region);
@@ -58,6 +46,9 @@ test.only('clicking on Home link renders intro text', async () => {
   userEvent.click(pokemon);
 
   const name = await screen.findByRole('heading', { name: /sobble/i });
+
+  expect(region).toBeInTheDocument();
+  expect(pokemon).toBeInTheDocument();
   expect(name).toBeInTheDocument();
 
   const home = screen.getByRole('link', { name: /home/i });
