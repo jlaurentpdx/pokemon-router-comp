@@ -15,6 +15,9 @@ const server = setupServer(
   })
 );
 
+beforeAll(() => server.listen());
+afterAll(() => server.close());
+
 test('Regions displays a list of 8 regions', async () => {
   render(
     <Router>
