@@ -36,7 +36,7 @@ test('App renders a header to the page', async () => {
   expect(list.children).toHaveLength(8);
 });
 
-test('user can view a list of regions, pokemon, and a pokemon detail', async () => {
+test('user can view a list of regions, pokemon, and a pokemons details simultaneously; then, can navigate to the home page', async () => {
   render(<App />);
 
   const region = await screen.findByRole('link', { name: /gen 8 \| galar/i });
@@ -50,6 +50,8 @@ test('user can view a list of regions, pokemon, and a pokemon detail', async () 
   expect(region).toBeInTheDocument();
   expect(pokemon).toBeInTheDocument();
   expect(name).toBeInTheDocument();
+
+  // additional navigation check - user can route back to the home page
 
   const home = screen.getByRole('link', { name: /home/i });
   userEvent.click(home);
