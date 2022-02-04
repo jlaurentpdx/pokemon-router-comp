@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import Home from './views/Home/Home';
 import Pokedex from './views/Pokedex/Pokedex';
@@ -12,15 +12,18 @@ export default function App() {
     <Router>
       <div className={styles.App}>
         <div className={styles.left}>
-          <h1>Pokémon Regions</h1>
+          <h1>Pokédex Navigator</h1>
           <Link to="/">Home</Link>
+          <h2>Regions</h2>
           <Regions />
           <Route path="/:generation/:name" component={PokeDetail} />
         </div>
 
         <div className={styles.right}>
-          <Route exact path="/" component={Home} />
-          <Route path="/:generation" component={Pokedex} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/:generation" component={Pokedex} />
+          </Switch>
         </div>
       </div>
     </Router>
