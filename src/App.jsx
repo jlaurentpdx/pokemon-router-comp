@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Home from './views/Home/Home';
 import Pokedex from './views/Pokedex/Pokedex';
-import Regions from './components/Regions/Regions';
-import PokeDetail from './components/PokeDetail/PokeDetail';
+import Regions from './views/Regions/Regions';
+import PokeDetail from './views/PokeDetail/PokeDetail';
 
 import styles from './App.css';
 

@@ -4,4 +4,4 @@ import App from './App';
 
 // behavioral - what would a user do?
 
-test('');
+test.skip('App renders a header to the page', () => {});
