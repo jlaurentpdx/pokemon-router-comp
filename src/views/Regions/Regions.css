@@ -1,0 +1,7 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  text-align: left;
+  list-style: none;
+}
