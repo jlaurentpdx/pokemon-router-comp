@@ -6,19 +6,19 @@ import { sliceRegion } from '../../utils/utils';
 import PokemonList from '../../components/PokemonList/PokemonList';
 
 export default function Pokedex() {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokedex, setPokedex] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const { region } = useParams();
 
   useEffect(() => {
-    const getPokemon = async () => {
+    const getPokedex = async () => {
       setLoading(true);
-      const pokemonList = await fetchPokedexByRegion(region);
-      setPokemon(pokemonList);
+      const pokedexByRegion = await fetchPokedexByRegion(region);
+      setPokedex(pokedexByRegion);
       setLoading(false);
     };
-    getPokemon();
+    getPokedex();
   }, [region]);
 
   if (loading) return <p>Loading...</p>;
@@ -26,7 +26,7 @@ export default function Pokedex() {
   return (
     <>
       <h1 style={{ textAlign: 'center' }}>{sliceRegion(region)}</h1>
-      <PokemonList {...{ pokemon }} />
+      <PokemonList {...{ pokedex }} />
     </>
   );
 }
