@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
 import PokemonList from './PokemonList';
 
-const pokemon = [
+const pokedex = [
   {
     entry_number: 1,
     pokemon_species: {
@@ -21,7 +21,7 @@ test('displays a list of pokemon', () => {
   render(
     <MemoryRouter initialEntries={['/kanto']}>
       <Route path="/:region">
-        <PokemonList pokemon={pokemon} />
+        <PokemonList pokedex={pokedex} />
       </Route>
     </MemoryRouter>
   );
