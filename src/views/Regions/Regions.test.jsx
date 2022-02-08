@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter as Router } from 'react-router-dom/cjs/react-router-dom.min';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import * as mock from '../../utils/mockData';
+import * as mock from '../../services/mockData';
 
 import Regions from './Regions';
 

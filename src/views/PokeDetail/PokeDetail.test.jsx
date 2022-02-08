@@ -2,7 +2,7 @@ import { MemoryRouter as Router, Route } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { sobble } from '../../utils/mockData';
+import { sobble } from '../../services/mockData';
 import PokeDetail from './PokeDetail';
 
 const server = setupServer(

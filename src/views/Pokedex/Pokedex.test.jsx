@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter as Router, Route } from 'react-router-dom';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import * as mock from '../../utils/mockData';
+import * as mock from '../../services/mockData';
 
 import Pokedex from './Pokedex';
 

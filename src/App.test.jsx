@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import * as mock from './utils/mockData';
+import * as mock from './services/mockData';
 
 import App from './App';
 
