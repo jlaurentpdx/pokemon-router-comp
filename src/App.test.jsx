@@ -24,9 +24,10 @@ const server = setupServer(
 beforeAll(() => server.listen());
 afterAll(() => server.close());
 
-test('App renders a header to the page', async () => {
+test('user can view a list of regions, pokemon, and a pokemons details simultaneously; then, can navigate to the home page', async () => {
   render(<App />);
 
+  // App should display a default layout
   const homeHeader = screen.getByRole('heading', { name: /getting started/i });
   const headings = screen.getAllByRole('heading');
   const list = await screen.findByRole('list', /regions/i);
@@ -34,11 +35,8 @@ test('App renders a header to the page', async () => {
   expect(homeHeader).toBeInTheDocument();
   expect(headings).toHaveLength(4);
   expect(list.children).toHaveLength(8);
-});
 
-test('user can view a list of regions, pokemon, and a pokemons details simultaneously; then, can navigate to the home page', async () => {
-  render(<App />);
-
+  // Behavioral testing - user clicks through possible Pokemon
   const region = await screen.findByRole('link', { name: /gen 8 \| galar/i });
   userEvent.click(region);
 
@@ -51,8 +49,7 @@ test('user can view a list of regions, pokemon, and a pokemons details simultane
   expect(pokemon).toBeInTheDocument();
   expect(name).toBeInTheDocument();
 
-  // additional navigation check - user can route back to the home page
-
+  // Final navigation check - user can route back to the home page
   const home = screen.getByRole('link', { name: /home/i });
   userEvent.click(home);
 
